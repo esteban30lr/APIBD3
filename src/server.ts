@@ -3,6 +3,9 @@ import morgan from 'morgan';
 import cors from 'cors';
 import compression from 'compression';
 
+import User from './routes/user.routes';
+
+
 class Server {
 
     public app: express.Application;
@@ -55,6 +58,7 @@ class Server {
     }
 
     routes() {
+        this.app.use('/user',User)
         // Ruta para la secuencia de Fibonacci
         this.app.get('/api/fibonacci/:number', (req, res) => {
             const num = parseInt(req.params.number, 10);

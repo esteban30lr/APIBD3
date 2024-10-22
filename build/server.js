@@ -8,6 +8,7 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const compression_1 = __importDefault(require("compression"));
+const user_routes_1 = __importDefault(require("./routes/user.routes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -53,6 +54,7 @@ class Server {
         return primes;
     }
     routes() {
+        this.app.use('/user', user_routes_1.default);
         // Ruta para la secuencia de Fibonacci
         this.app.get('/api/fibonacci/:number', (req, res) => {
             const num = parseInt(req.params.number, 10);
