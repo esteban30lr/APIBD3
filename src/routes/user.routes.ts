@@ -15,26 +15,14 @@ class userRouter{
     }
 
     async postUser(req:Request, res:Response):Promise<any>{
+        console.log(req.body);
         const users = new User(req.body);
         await users.save();
         return res.json({code:200,user: users});
     }
 
-    async saludar(req:Request, res:Response):Promise<any>{
-        return res.json({
-            saludar:'HOLA MUNDO'
-        })
-    }
-
-    async otroSaludar(req:Request, res:Response):Promise<any>{
-        return res.json({
-            saludar:'HOLA MUNDO'
-        })
-    }
 
     routesUser(){
-        this.router.get('/', this.saludar);
-        this.router.get('/otroSaludar', this.otroSaludar);
 
         this.router.get('/getUsers', this.getUser);
         this.router.post('/postUser',this.postUser);

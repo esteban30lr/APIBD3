@@ -21,6 +21,8 @@ class Server {
         this.app.use(morgan('dev'));
         this.app.use(compression());
         this.app.use(cors());
+
+        this.app.use(express.json());
     }
 
     // Función para generar la secuencia de Fibonacci hasta n
@@ -58,7 +60,8 @@ class Server {
     }
 
     routes() {
-        this.app.use('/user',User)
+        this.app.use('/user',User);
+
         // Ruta para la secuencia de Fibonacci
         this.app.get('/api/fibonacci/:number', (req, res) => {
             const num = parseInt(req.params.number, 10);

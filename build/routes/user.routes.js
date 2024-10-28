@@ -27,28 +27,13 @@ class userRouter {
     }
     postUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
             const users = new user_1.default(req.body);
             yield users.save();
             return res.json({ code: 200, user: users });
         });
     }
-    saludar(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return res.json({
-                saludar: 'HOLA MUNDO'
-            });
-        });
-    }
-    otroSaludar(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return res.json({
-                saludar: 'HOLA MUNDO'
-            });
-        });
-    }
     routesUser() {
-        this.router.get('/', this.saludar);
-        this.router.get('/otroSaludar', this.otroSaludar);
         this.router.get('/getUsers', this.getUser);
         this.router.post('/postUser', this.postUser);
     }
